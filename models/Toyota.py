@@ -21,10 +21,5 @@ class Toyota(Model):
 
     def change_color_by_id(self, id):
         data = self.__get_all_data()
-        for i in data:
-            if data[i]["id"] == id:
-                data[i]["color"] = input("Input color:\t")
-                self.__write_data(data)
-                break
-
-
+        data[id]["color"] = input("Input color:\t")
+        self.__write_data(data)
