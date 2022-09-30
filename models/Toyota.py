@@ -1,54 +1,30 @@
-import json
+from framework.models import Model
 
 
-class Toyota:
+class Toyota(Model):
     file = "toyotas.json"
 
-    def __init__(self, name, engine, color, id):
-        self.__name = name
-        self.__engine = engine
-        self.__color = color
-        self.__id = id
+    def __init__(self, name, engine, color):
+        self.name = name
+        self.engine = engine
+        self.color = color
+        self.id = self.__create_id()
 
-    # @property
-    # def name(self):
-    #     return self.__name
-    #
-    # @property
-    # def engine(self):
-    #     return self.__engine
-    #
-    # @property
-    # def color(self):
-    #     return self.__color
-    #
-    # @name.setter
-    # def name(self, value):
-    #     self.__name = value
-    #
-    # @engine.setter
-    # def engine(self, value):
-    #     self.__engine = value
-    #
-    # @color.setter
-    # def color(self, value):
-    #     self.__color = value
+    def drive(self):
+        #Some script to drive
+        #while I drive i can shift gear
+        pass
 
-    def save(self):
-        file = open("database/" + self.file, "r")
-        data = json.load(file)
-        file.close()
+    def __shift_gear(self):
+        #Some script to shift_gear
+        pass
 
-        data.append(self.__dict__)
-        file = open("database/" + self.file, "w")
-        
-        data_in_json = json.dumps(data)
-        file.write(data_in_json)
-        file.close()
+    def change_color_by_id(self, id):
+        data = self.__get_all_data()
+        for i in data:
+            if data[i]["id"] == id:
+                data[i]["color"] = input("Input color:\t")
+                self.__write_data(data)
+                break
 
-    @classmethod
-    def get_all_data(cls):
-        file = open("database/" + cls.file, "r")
-        data = json.load(file)
 
-        print(data)

@@ -9,24 +9,43 @@ def start_framework():
               "3. Get a car by id\n" +
               "0. Exit\n")
 
-        chosen = int(input("Chose item:\t"))
-        if chosen == 1:
-            name = input("Input name:\t")
-            engine = input("Input engine:\t")
-            color = input("Input color:\t")
-            id = input("Input id:\t")
+        try:
+            chosen = int(input("Choose item:\t"))
+            print("\n")
 
-            new_toyota = Toyota(name, engine, color, id)
-            new_toyota.save()
+            if chosen == 1:
+                name = input("Input name:\t")
+                engine = input("Input engine:\t")
+                color = input("Input color:\t")
 
-        elif chosen == 2:
-            Toyota.get_all_data()
+                new_toyota = Toyota(name, engine, color)
+                new_toyota.save()
+                print("\n")
 
-        elif chosen == 3:
-            pass
-        elif chosen == 0:
-            print("Thanks for using my app!")
-            break
+            elif chosen == 2:
+                Toyota.show_data()
+                print("\n")
+
+            elif chosen == 3:
+                id = int(input("Input id:\t"))
+                if Toyota.size_of_database() < id:
+                    print("There is no id like this\n")
+                else:
+                    Toyota.get_by_id(id)
+                    print("\n")
+
+            elif chosen == 4:
+                id = int(input("Input id:\t"))
+                if Toyota.size_of_database() < id:
+                    print("There is no id like this\n")
+                else:
+                    Toyota.change_color_by_id(id)
+                    print("\n")
+            else:
+                print("Thanks for using my app!")
+                break
+        except():
+            print("Wrong data entered")
 
 
 if __name__ == "__main__":
