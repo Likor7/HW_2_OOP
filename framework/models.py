@@ -22,7 +22,7 @@ class Model(ABC):
 
     @classmethod
     def get_by_id(cls, id):
-        print("Result:\n:", [cls._get_all_data()[id]['id']][0])
+        print("Result:", [cls._get_all_data()[id-1]][0])
 
     def _create_id(self):
         return self.size_of_database() + 1

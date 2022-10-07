@@ -31,10 +31,10 @@ def start_framework():
             elif chosen == 3:
                 id = int(input("Input id:\t"))
                 if Toyota.size_of_database() < id:
+                    print("There is no id like this\n")
+                else:
                     Toyota.get_by_id(id)
                     print("\n")
-                else:
-                    print("There is no id like this\n")
 
             elif chosen == 4:
                 id = int(input("Input id:\t"))
