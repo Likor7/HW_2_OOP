@@ -8,18 +8,17 @@ class Toyota(Model):
         self.name = name
         self.engine = engine
         self.color = color
-        self.id = self.__create_id()
+        self.gear = 0
+        self.id = self._create_id()
 
     def drive(self):
-        #Some script to drive
-        #while I drive i can shift gear
-        pass
+        print("drive")
 
-    def __shift_gear(self):
-        #Some script to shift_gear
-        pass
+    def __shift_gear(self, gear):
+        self.gear = gear
 
-    def change_color_by_id(self, id):
-        data = self.__get_all_data()
-        data[id]["color"] = input("Input color:\t")
-        self.__write_data(data)
+    @classmethod
+    def change_color_by_id(cls, id):
+        data = cls._get_all_data()
+        data[id-1]["color"] = input("Input color:\t")
+        cls._write_data(data)

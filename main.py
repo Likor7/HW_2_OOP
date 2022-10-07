@@ -7,6 +7,7 @@ def start_framework():
               "1. Add a new car\n" +
               "2. Get all cars\n" +
               "3. Get a car by id\n" +
+              "4. Change a color by id\n" +
               "0. Exit\n")
 
         try:
@@ -20,6 +21,7 @@ def start_framework():
 
                 new_toyota = Toyota(name, engine, color)
                 new_toyota.save()
+                print("Successfully saved!")
                 print("\n")
 
             elif chosen == 2:
@@ -29,10 +31,10 @@ def start_framework():
             elif chosen == 3:
                 id = int(input("Input id:\t"))
                 if Toyota.size_of_database() < id:
-                    print("There is no id like this\n")
-                else:
                     Toyota.get_by_id(id)
                     print("\n")
+                else:
+                    print("There is no id like this\n")
 
             elif chosen == 4:
                 id = int(input("Input id:\t"))
@@ -40,7 +42,9 @@ def start_framework():
                     print("There is no id like this\n")
                 else:
                     Toyota.change_color_by_id(id)
+                    print("Successfully changed!")
                     print("\n")
+
             else:
                 print("Thanks for using my app!")
                 break
